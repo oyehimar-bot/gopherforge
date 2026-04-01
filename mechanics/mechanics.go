@@ -23,5 +23,14 @@ func main() {
 	canAfford := goldCollected >= itemCost
 	hasSpace := freeSlots <= 10
 	canBuy := canAfford && hasSpace
-	fmt.Println(canBuy)
+	fmt.Printf("Affordability is %t\n", canBuy)
+
+	//Level Up Condition
+	XP := 850
+	questXP := 200
+	const levelUpXP = 1000
+
+	XP += questXP
+	levelUp := XP >= levelUpXP
+	fmt.Printf("Leveling Up is %t\n", levelUp)
 }
