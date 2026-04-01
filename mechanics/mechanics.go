@@ -11,7 +11,7 @@ func main() {
 	remainingHealth := playerHealth + armor - damage // Health after damage
 	fmt.Printf("Remaining Health: %d\n", remainingHealth)
 
-	criticalHealth := playerHealth < 30 // When health is below 30
+	criticalHealth := remainingHealth < 30 // When health is below 30
 	fmt.Printf("Low HP: %t\n", criticalHealth)
 
 	//Shop Logic
@@ -21,7 +21,7 @@ func main() {
 	freeSlots := inventorySlots - 2 // Assuming 2 slots are used
 
 	canAfford := goldCollected >= itemCost
-	hasSpace := freeSlots <= 10
+	hasSpace := freeSlots <= 10 && freeSlots > 0
 	canBuy := canAfford && hasSpace
 	fmt.Printf("Affordability is %t\n", canBuy)
 
