@@ -7,4 +7,7 @@ func main()  {
 	damage = append(damage, 50, 60)
 	damage= damage[1:]
 	fmt.Println(damage)
+
+	characters:= [4]string{"Gwen", "Hale", "Iris", "Jax"}
+	fmt.Println(characters)
 }
