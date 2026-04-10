@@ -11,9 +11,21 @@ func playAction(action string) {
 		time.Sleep(10 * time.Millisecond)
 	}
 }
+
 func main() {
-	go playAction("Player Jumping")
-	go playAction("Enemy shooting")
-	go playAction("Background music playing")
-	time.Sleep(10 * time.Millisecond)
+	actions := []string{
+		"Player Jumping",
+		"Enemy Shooting",
+		"Background Music Playing",
+	}
+
+	for _, action := range actions {
+		// Pass 'action' as parameter to avoid closure capture issue
+		go func(act string) {
+			playAction(act)
+		}(action)
+	}
+
+	// Wait enough time for all goroutines to finish
+	time.Sleep(100 * time.Millisecond)
 }
