@@ -36,4 +36,21 @@ func main() {
 	}
 	wg.Wait()
 	fmt.Println("All game assets loaded. Starting game...")
+
+
+	var wg2 sync.WaitGroup
+
+	gameData := []string{ "Player Position", "Inventory", "Settings", "Achievements", "Game Progress" }
+	for _, data := range gameData {
+		wg2.Add(1)
+		go func(item string) {
+			defer wg2.Done()
+
+			fmt.Printf("Processing %s...\n", item)
+			time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
+			fmt.Printf("Finished processing %s\n", item)
+		}(data)
+	}
+	wg2.Wait()
+	fmt.Println("Game saved successfully")
 }
